@@ -4,6 +4,7 @@
 
 ### starting backend
 must set up env variables on first pull
+
     cd ecommerce-backend
     npm install
     npm start
