@@ -1,5 +1,15 @@
 # DBD381Project
 
+## Getting started
+
+### starting backend
+    cd ecommerce-backend
+    npm start
+
+### starting frontend
+    cd ecommerce-frontend
+    npm start
+
 Project overview
 -->
 -->
