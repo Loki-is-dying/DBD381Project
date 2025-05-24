@@ -3,11 +3,14 @@
 ## Getting started
 
 ### starting backend
+must set up env variables on first pull
     cd ecommerce-backend
+    npm install
     npm start
 
 ### starting frontend
     cd ecommerce-frontend
+    npm install
     npm start
 
 Project overview
