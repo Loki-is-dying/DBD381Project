@@ -34,4 +34,14 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:name', async (req,res)=>{
+  try{
+    const product = await Product.findOneAndDelete({name:req.params.name});
+    if(!product) return res.status(404).json({error:'Product not found'});
+    res.json(product);
+    }catch(err){
+      res.status(500).json({error:err.message});
+      }
+})
+
 module.exports = router;

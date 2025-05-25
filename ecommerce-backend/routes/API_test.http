@@ -1,13 +1,55 @@
 GET http://localhost:5000/api/products
 ###
+GET http://localhost:5000/api/categories
+###
 
 POST http://localhost:5000/api/products
 Content-Type: application/json
 
 {
-    "name":"DickCheese",
+    "name":"Cheese",
     "price": "49",
     "stock": "10",
     "description": "Is a wonderful thing",
-    "category": "Jizzler"
+    "category": "Dairy"
 }
+###
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+    "name":"Milk",
+    "price": "30",
+    "stock": "20",
+    "description": "Tasty",
+    "category": "Dairy"
+}
+###
+
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+
+{
+    "name": "Dairy"
+    
+}
+
+###
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+
+{
+    "name": "Meat"
+}
+###
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+
+{
+    "name": "Fruits"    
+}
+###
+
+DELETE http://localhost:5000/api/products/DickCheese
+
+

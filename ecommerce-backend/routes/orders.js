@@ -37,4 +37,19 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+//Delete order
+
+router.delete('/:id', async (req,res)=>{
+  try{
+    const order = await Order.findByIdAndDelete(
+      erq.params.id, 
+      {status: req.body.status},
+      {new: true}
+    )
+    res.json(order)
+    }catch(err){
+      res.status(400).json({error:err.message})
+  }
+});
+
 module.exports = router;
