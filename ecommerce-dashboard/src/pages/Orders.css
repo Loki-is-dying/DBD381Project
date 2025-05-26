@@ -1,0 +1,77 @@
+.orders-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.products-list {
+  margin-bottom: 3rem;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  width: 180px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px #ccc;
+  text-align: center;
+}
+
+.product-card h3 {
+  margin-top: 0;
+}
+
+.product-card button {
+  margin-top: 0.5rem;
+  padding: 5px 10px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cart-panel {
+  padding: 1rem;
+  border-top: 2px solid #444;
+}
+
+.cart-panel ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.cart-panel li {
+  margin-bottom: 0.5rem;
+}
+
+.cart-panel button {
+  margin: 0 4px;
+  padding: 3px 7px;
+}
+
+.place-order-btn {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 1rem;
+  font-weight: bold;
+}
