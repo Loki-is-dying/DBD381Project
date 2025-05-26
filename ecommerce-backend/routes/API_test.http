@@ -1,7 +1,6 @@
 GET http://localhost:5000/api/products
 ###
-GET http://localhost:5000/api/categories
-###
+
 
 POST http://localhost:5000/api/products
 Content-Type: application/json
@@ -25,31 +24,91 @@ Content-Type: application/json
     "category": "Dairy"
 }
 ###
-
-POST http://localhost:5000/api/categories
-Content-Type: application/json
-
-{
-    "name": "Dairy"
-    
-}
-
-###
-POST http://localhost:5000/api/categories
-Content-Type: application/json
-
-{
-    "name": "Meat"
-}
-###
-POST http://localhost:5000/api/categories
-Content-Type: application/json
-
-{
-    "name": "Fruits"    
-}
-###
-
 DELETE http://localhost:5000/api/products/DickCheese
+###
+
+
+
+### API Endpoints for category ----------------------------------------------------
+
+### Add New Category Document
+POST http://localhost:5000/api/categories
+Content-Type: application/json
+
+{
+  "userId": "60c72b2f9e1d4c4f887fd123",
+  "categories": [
+    {
+      "CatId": "60c72b559e1d4c4f887fd321",
+      "quantity": 10
+    },
+    {
+      "CatId": "60c72b559e1d4c4f887fd322",
+      "quantity": 5
+    }
+  ]
+}
+
+### Get All Category Documents
+GET http://localhost:5000/api/categories
+
+### Update a Category Document by ID
+PUT http://localhost:5000/api/categories/category/update/6834534b45f1268d805dc104
+Content-Type: application/json
+
+{
+  "categories": [
+    {
+      "CatId": "60c72b559e1d4c4f887fd321",
+      "quantity": 20
+    }
+  ]
+}
+
+### Delete a Category Document by ID
+DELETE http://localhost:5000/api/categories/categories/6834534b45f1268d805dc108
+###
+
+
+
+
+### Order API endpoints -----------------------------------------------------------
+
+### Retrieve all orders in database
+GET http://localhost:5000/api/orders
+
+### Create New Order 
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "userId": "60c72b2f9e1d4c4f887fd123",
+  "products": [
+    {
+      "productId": "60c72b559e1d4c4f887fd124",
+      "quantity": 2
+    },
+    {
+      "productId": "60c72b559e1d4c4f887fd125",
+      "quantity": 1
+    }
+  ],
+  "total": 150
+}
+
+### Get All Orders by User ID
+GET http://localhost:5000/api/orders/user/60c72b2f9e1d4c4f887fd123
+
+### Update Order Status
+PUT http://localhost:5000/api/orders/68344efd9f32736ce600afb1
+Content-Type: application/json
+
+{
+  "status": "Shipped"
+}
+
+### Delete Order
+DELETE http://localhost:5000/api/orders/68344efd9f32736ce600afb1
+
 
 
