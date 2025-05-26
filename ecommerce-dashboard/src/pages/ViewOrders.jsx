@@ -4,11 +4,13 @@ import './ViewOrders.css';
 
 export default function ViewOrders() {
   const [orders, setOrders] = useState([]);
-  const [userId] = useState('664c1b2ea091e5b6fae7a8d2'); // Replace with actual logged-in user ID
+  const userId = localStorage.getItem('userId'); // ✅ dynamically get user ID
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
+    if (userId) {
+      fetchOrders();
+    }
+  }, [userId]);
 
   const fetchOrders = async () => {
     try {
@@ -22,7 +24,9 @@ export default function ViewOrders() {
   return (
     <div className="view-orders-container">
       <h1 className="orders-title">📦 Your Orders</h1>
-      {orders.length === 0 ? (
+      {!userId ? (
+        <p>Please log in to view your orders.</p>
+      ) : orders.length === 0 ? (
         <p>No orders found.</p>
       ) : (
         <div className="orders-grid">
@@ -38,7 +42,7 @@ export default function ViewOrders() {
                   </li>
                 ))}
               </ul>
-              <p><strong>Total:</strong> ${order.total.toFixed(2)}</p>
+              <p><strong>Total:</strong> ${order.total?.toFixed(2)}</p>
             </div>
           ))}
         </div>

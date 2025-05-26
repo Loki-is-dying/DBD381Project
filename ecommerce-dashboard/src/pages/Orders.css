@@ -75,3 +75,45 @@
   margin-top: 1rem;
   font-weight: bold;
 }
+
+.cart-items {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-name {
+  flex: 1;
+  font-weight: bold;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quantity-controls button {
+  padding: 3px 8px;
+  font-size: 1rem;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.item-price {
+  width: 80px;
+  text-align: right;
+}
+
