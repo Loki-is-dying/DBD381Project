@@ -10,7 +10,7 @@ must set up env variables on first pull
     npm start
 
 ### starting frontend
-    cd ecommerce-frontend
+    cd ecommerce-dashboard
     npm install
     npm start
 
