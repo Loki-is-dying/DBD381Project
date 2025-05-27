@@ -1,7 +1,8 @@
 GET http://localhost:5000/api/products
 ###
 
-
+GET http://localhost:5000/api/localhost:3000/users
+###
 POST http://localhost:5000/api/products
 Content-Type: application/json
 
@@ -36,16 +37,10 @@ POST http://localhost:5000/api/categories
 Content-Type: application/json
 
 {
-  "userId": "60c72b2f9e1d4c4f887fd123",
   "categories": [
-    {
-      "CatId": "60c72b559e1d4c4f887fd321",
-      "quantity": 10
-    },
-    {
-      "CatId": "60c72b559e1d4c4f887fd322",
-      "quantity": 5
-    }
+    { "name": "Dairy", "quantity": 10 },
+    { "name": "Meats", "quantity": 5 },
+    { "name": "Fruits", "quantity": 15 }
   ]
 }
 
