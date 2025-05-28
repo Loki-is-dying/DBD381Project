@@ -1,3 +1,5 @@
+
+### API Endpoints for products ----------------------------------------------------
 GET http://localhost:5000/api/products
 ###
 
@@ -92,10 +94,10 @@ Content-Type: application/json
 }
 
 ### Get All Orders by User ID
-GET http://localhost:5000/api/orders/user/60c72b2f9e1d4c4f887fd123
+GET http://localhost:5000/api/orders/user/6834639992b385f4d35031a7
 
 ### Update Order Status
-PUT http://localhost:5000/api/orders/68344efd9f32736ce600afb1
+PUT http://localhost:5000/api/orders/6835a64ba4aee8a63d348ec4
 Content-Type: application/json
 
 {
@@ -103,7 +105,7 @@ Content-Type: application/json
 }
 
 ### Delete Order
-DELETE http://localhost:5000/api/orders/68344efd9f32736ce600afb1
+DELETE http://localhost:5000/api/orders/6834648992b385f4d35031b9
 
 
 
