@@ -3,6 +3,9 @@
 **Tech used: Node.js, Express.js, React.js, Mongoose, Docker**
 
 ## Getting started
+# NB must set up .env variables for any part of this application to work even for docker
+    PORT = 5000
+    MONGODB_URI = YourMongoConnectionString(Provided once created a cluster on atlas)
 
 # For Development purposes
 ### starting backend
