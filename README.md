@@ -44,7 +44,7 @@ Project overview
 --> MongoDB atlas for our Distributed database
 
 Team members and roles
-1. Gabriella Petersen - Research and documentaion
-2. Luqmaan Slarmie - Design and implementation + Testing
-3. Trent Evans - Design and implementation + Testing
-4. Xavier Barnard - Research 
+1. Gabriella Petersen - Research and documentation - 600850
+2. Luqmaan Slarmie - Design and implementation + Testing - 600919
+3. Trent Evans - Design and implementation + Testing - 600383
+4. Xavier Barnard - Research - 600927
