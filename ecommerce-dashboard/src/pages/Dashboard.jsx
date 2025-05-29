@@ -12,6 +12,8 @@ export default function Dashboard() {
         <Link to="/orders">Manage Orders</Link>
         <Link to="/categories">Manage Categories</Link>
         <Link to="/ViewOrders">View Orders</Link>
+        <Link to = "/Reviews">Reviews</Link>
+        <Link to = "/Transactions">Transactions</Link>
       </div>
     </div>
   );

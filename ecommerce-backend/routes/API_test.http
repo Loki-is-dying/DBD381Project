@@ -107,5 +107,81 @@ Content-Type: application/json
 ### Delete Order
 DELETE http://localhost:5000/api/orders/6834648992b385f4d35031b9
 
+### Review API endpoints------------------------------------------->
+
+### Retrieve all reviews in database
+GET http://localhost:5000/api/reviews
+
+### Create New Review
+POST http://localhost:5000/api/reviews
+Content-Type: application/json
+
+{
+  "userId": "66506bd26b0d18f6b70d215e",
+  "reviews": [
+    {
+      "rating": 4,
+      "comment": "Great product!"
+    }
+  ]
+}
+### Update review
+PUT http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e
+Content-Type: application/json
+
+{
+  "reviews": [
+    {
+      "rating": 5,
+      "comment": "Updated: Even better than before!"
+    }
+  ]
+}
+
+### Delete Review
+DELETE http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e
+
+###transaction api endpoints------------------------------------------>
+
+### Retrieve all transactions in database
+GET http://localhost:5000/api/transactions
+
+
+### Create New Transaction
+POST http://localhost:5000/api/transactions
+Content-Type: application/json
+
+{
+  "userId": "66506bd26b0d18f6b70d215a",
+  "transaction": [
+    {
+      "amount": 100.0,
+      "currency": "USD",
+      "type": "deposit"
+    }
+  ]
+}
+
+### Update transaction
+PUT http://localhost:5000/api/transactions/66506bd26b0d18f6b70d215a
+Content-Type: application/json
+
+{
+  "userId": "66506bd26b0d18f6b70d215a",
+  "transaction": [
+    {
+      "amount": 150.0,
+      "currency": "USD",
+      "type": "deposit"
+    }
+  ]
+}
+
+###delete transaction
+DELETE http://localhost:5000/api/transactions/66506bd26b0d18f6b70d215a
+
+
+
+
 
 
