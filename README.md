@@ -2,6 +2,8 @@
 
 ## Getting started
 
+
+# For Development purposes
 ### starting backend
 must set up env variables on first pull
 
@@ -13,6 +15,14 @@ must set up env variables on first pull
     cd ecommerce-dashboard
     npm install
     npm start
+
+# For Viewing purposes
+### starting docker
+be in root directory
+### build container
+    docker compose up
+### Remove container
+    docker compose down
 
 Project overview
 -->
