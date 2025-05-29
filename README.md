@@ -3,7 +3,7 @@
 **Tech used: Node.js, Express.js, React.js, Mongoose, Docker**
 
 ## Getting started
-# NB must set up .env variables for any part of this application to work even for docker
+# NB must set up .env variables for any part of this application to work even for docker - place .env in root of ecommerce-backend
     PORT = 5000
     MONGODB_URI = YourMongoConnectionString(Provided once created a cluster on atlas)
 
