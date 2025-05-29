@@ -1,69 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import './Transactions';
 
-export default function Transactions() {
-  const [transactions, setTransactions] = useState([]);
-  const [newTransaction, setNewTransaction] = useState({
-    userId: '',
-    amount: '',
-    currency: 'USD',
-    type: 'deposit'
-  });
+export default function TransactionPage({ userId, order, onPaymentSuccess }) {
+  // Hooks called at top level — always, no matter what
+  const [paymentMethod, setPaymentMethod] = useState('Cash');
   const [message, setMessage] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const fetchTransactions = async () => {
+  // Early return if order not available, after hooks
+  if (!order) return <p>Waiting for order details...</p>;
+
+  const handlePayment = async () => {
+    setIsProcessing(true);
+    setMessage('');
+
     try {
-      const res = await axios.get('http://localhost:5000/api/transactions');
-      setTransactions(res.data);
+      const transaction = {
+        products: order.products,
+        totalAmount: order.total,
+        paymentMethod,
+        paymentStatus: 'Paid',
+        date: new Date(),
+      };
+
+      await axios.post('http://localhost:5000/api/transactions', {
+        userId,
+        transaction,
+      });
+
+      await axios.put(`http://localhost:5000/api/orders/${order._id}`, {
+        status: 'Paid',
+      });
+
+      setMessage('Payment successful! Thank you.');
+      onPaymentSuccess && onPaymentSuccess();
     } catch (err) {
-      setMessage('Failed to fetch transactions');
-    }
-  };
-
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
-
-  const handleChange = (e) => {
-    setNewTransaction({ ...newTransaction, [e.target.name]: e.target.value });
-  };
-
-  const addTransaction = async () => {
-    try {
-      await axios.post('http://localhost:5000/api/transactions', newTransaction);
-      setMessage('Transaction added!');
-      setNewTransaction({ userId: '', amount: '', currency: 'USD', type: 'deposit' });
-      fetchTransactions();
-    } catch (err) {
-      setMessage('Failed to add transaction');
+      setMessage('Payment failed. Please try again.');
+      console.error(err);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   return (
-    <div className="container">
-      <h1>Transactions</h1>
+    <div className="transaction-page">
+      <h2>Pay for Order #{order._id}</h2>
+      <p>Total Amount: ${order.total?.toFixed(2)}</p>
 
-      <div>
-        <input name="userId" placeholder="User ID" value={newTransaction.userId} onChange={handleChange} />
-        <input name="amount" placeholder="Amount" value={newTransaction.amount} onChange={handleChange} type="number" />
-        <input name="currency" placeholder="Currency" value={newTransaction.currency} onChange={handleChange} />
-        <select name="type" value={newTransaction.type} onChange={handleChange}>
-          <option value="deposit">Deposit</option>
-          <option value="purchase">Purchase</option>
+      <label>
+        Select Payment Method:
+        <select value={paymentMethod} onChange={e => setPaymentMethod(e.target.value)}>
+          <option value="Cash">Cash</option>
+          <option value="Card">Card</option>
+          <option value="PayPal">PayPal</option>
         </select>
-        <button onClick={addTransaction}>Add Transaction</button>
-      </div>
+      </label>
 
-      <p>{message}</p>
+      <button onClick={handlePayment} disabled={isProcessing}>
+        {isProcessing ? 'Processing...' : 'Pay Now'}
+      </button>
 
-      <ul>
-        {transactions.map((tx, index) => (
-          <li key={index}>
-            <strong>{tx.type}</strong>: {tx.amount} {tx.currency} (User ID: {tx.userId})
-          </li>
-        ))}
-      </ul>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }

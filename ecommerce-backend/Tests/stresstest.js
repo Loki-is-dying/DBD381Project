@@ -38,7 +38,7 @@ async function createOrder() {
 async function runStressTest() {
   const steps = [10, 50, 100, 200, 500];
   for (const concurrentRequests of steps) {
-    console.log(`\n🚀 Testing with ${concurrentRequests} concurrent requests...`);
+    console.log(`\n Testing with ${concurrentRequests} concurrent requests...`);
 
     const start = Date.now();
     const promises = Array.from({ length: concurrentRequests }, () => createOrder());
@@ -48,9 +48,9 @@ async function runStressTest() {
     const successCount = results.filter(r => r.success).length;
     const failCount = results.length - successCount;
 
-    console.log(`✅ Success: ${successCount}`);
-    console.log(`❌ Failed: ${failCount}`);
-    console.log(`⏱ Duration: ${duration} ms`);
+    console.log(`Success: ${successCount}`);
+    console.log(`Failed: ${failCount}`);
+    console.log(`Duration: ${duration} ms`);
   }
 
   console.log('\nStress test complete.');

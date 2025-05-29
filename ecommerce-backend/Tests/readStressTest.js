@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const API_URL = 'http://localhost:5000/api/orders'; // Adjust to your GET orders endpoint
+const API_URL = 'http://localhost:5000/api/orders';
 
 // Simulate one GET request
 async function getOrders() {

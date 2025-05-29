@@ -2,11 +2,17 @@
   padding: 2rem;
   font-family: Arial, sans-serif;
 }
+.dashboard h1,
+.dashboard p {
+  text-align: center;
+}
 
 .nav-links {
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {

@@ -1,71 +1,77 @@
+// routes/reviews.js
 const express = require('express');
 const router = express.Router();
 const Review = require('../models/Reviews');
 
-// Add a review
+// Create or Add a review
 router.post('/', async (req, res) => {
+  const { userId, rating, comment } = req.body;
+
+  if (!userId || !rating || !comment) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
   try {
-    const { userId, rating, comment } = req.body;
-    const review = await Review.findOneAndUpdate(
+    const reviewDoc = await Review.findOneAndUpdate(
       { userId },
-      {
-        $push: {
-          reviews: { userId, rating, comment }
-        }
-      },
+      { $push: { reviews: { userId, rating, comment } } },
       { upsert: true, new: true }
     );
-    res.status(201).json(review);
+    res.status(201).json(reviewDoc);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 });
 
-// View all reviews
+// Get all reviews
 router.get('/', async (req, res) => {
   try {
-    const reviews = await Review.find();
+    const reviews = await Review.find()
+      .populate('userId', 'name') // populate top-level user
+      .populate('reviews.userId', 'name'); // populate review authors
+
     res.json(reviews);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Update a review by userId and index
+
+// Update a specific review by index
 router.put('/:userId/:index', async (req, res) => {
+  const { userId, index } = req.params;
+  const { rating, comment } = req.body;
+
   try {
-    const { userId, index } = req.params;
-    const { rating, comment } = req.body;
-
-    const review = await Review.findOne({ userId });
-    if (!review) return res.status(404).json({ error: 'Review not found' });
-
-    if (index >= review.reviews.length) {
-      return res.status(400).json({ error: 'Invalid review index' });
+    const reviewDoc = await Review.findOne({ userId });
+    if (!reviewDoc || !reviewDoc.reviews[index]) {
+      return res.status(404).json({ error: 'Review not found' });
     }
 
-    review.reviews[index].rating = rating;
-    review.reviews[index].comment = comment;
-    await review.save();
+    reviewDoc.reviews[index].rating = rating;
+    reviewDoc.reviews[index].comment = comment;
+    await reviewDoc.save();
 
-    res.json(review);
+    res.json(reviewDoc);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Delete a review by userId and index
+// Delete a review
 router.delete('/:userId/:index', async (req, res) => {
+  const { userId, index } = req.params;
+
   try {
-    const { userId, index } = req.params;
+    const reviewDoc = await Review.findOne({ userId });
+    if (!reviewDoc || index >= reviewDoc.reviews.length) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
 
-    const review = await Review.findOne({ userId });
-    if (!review) return res.status(404).json({ error: 'Review not found' });
+    reviewDoc.reviews.splice(index, 1);
+    await reviewDoc.save();
 
-    review.reviews.splice(index, 1);
-    await review.save();
-
-    res.json({ message: 'Review deleted', review });
+    res.json({ message: 'Review deleted', review: reviewDoc });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

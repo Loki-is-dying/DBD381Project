@@ -2,8 +2,7 @@
 ### API Endpoints for products ----------------------------------------------------
 GET http://localhost:5000/api/products
 ###
-
-GET http://localhost:5000/api/localhost:3000/users
+GET http://localhost:5000/api/products/6833378fb654e814efc8599c
 ###
 POST http://localhost:5000/api/products
 Content-Type: application/json
@@ -16,20 +15,8 @@ Content-Type: application/json
     "category": "Dairy"
 }
 ###
-POST http://localhost:5000/api/products
-Content-Type: application/json
-
-{
-    "name":"Milk",
-    "price": "30",
-    "stock": "20",
-    "description": "Tasty",
-    "category": "Dairy"
-}
-###
 DELETE http://localhost:5000/api/products/DickCheese
 ###
-
 
 
 ### API Endpoints for category ----------------------------------------------------
@@ -107,6 +94,10 @@ Content-Type: application/json
 ### Delete Order
 DELETE http://localhost:5000/api/orders/6834648992b385f4d35031b9
 
+
+
+
+
 ### Review API endpoints------------------------------------------->
 
 ### Retrieve all reviews in database
@@ -117,29 +108,26 @@ POST http://localhost:5000/api/reviews
 Content-Type: application/json
 
 {
-  "userId": "66506bd26b0d18f6b70d215e",
-  "reviews": [
-    {
-      "rating": 4,
-      "comment": "Great product!"
-    }
-  ]
+  "userId": "66506bd26b0d18f6b70d333e",
+  "rating": 5,
+  "comment": "Great product!"
 }
+
 ### Update review
-PUT http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e
+PUT http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e/0
 Content-Type: application/json
 
 {
-  "reviews": [
-    {
-      "rating": 5,
-      "comment": "Updated: Even better than before!"
-    }
-  ]
+  "rating": 5,
+  "comment": "Updated: Even better than before!"
 }
 
+
 ### Delete Review
-DELETE http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e
+DELETE http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e/0
+
+
+
 
 ###transaction api endpoints------------------------------------------>
 

@@ -1,79 +1,63 @@
-/* Reviews.css */
-
-.container {
+.review-container {
   max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: auto;
+  padding: 1rem;
+  font-family: sans-serif;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 25px;
-}
-
-div > input {
-  display: inline-block;
-  width: calc(33% - 12px);
-  margin-right: 10px;
-  margin-bottom: 15px;
-  padding: 8px 10px;
-  border: 1.5px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
+.review-form input {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  display: block;
+  width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
 }
 
-div > input:focus {
-  border-color: #007BFF;
-  outline: none;
-}
-
-div > input[name="rating"] {
-  width: 60px;
-}
-
-button {
-  background-color: #007BFF;
+.review-form button {
+  padding: 0.5rem 1rem;
+  background-color: #0077cc;
   color: white;
-  padding: 9px 18px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
 }
 
-button:hover {
-  background-color: #0056b3;
+.review-form button:hover {
+  background-color: #005fa3;
 }
 
-p {
-  font-size: 1rem;
-  color: #444;
-  text-align: center;
-  min-height: 20px;
-  margin-top: 15px;
+.message {
+  color: green;
+  margin-top: 1rem;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 30px;
+.reviews-list {
+  margin-top: 2rem;
 }
 
-ul li {
-  background: white;
+.review-card {
   border: 1px solid #ddd;
-  padding: 12px 15px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
-  color: #333;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.own-review {
+  border: 2px solid #0077cc;
+  background-color: #e8f4ff;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
 }
