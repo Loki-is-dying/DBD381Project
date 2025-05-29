@@ -31,10 +31,13 @@ be in root directory eg: ***C:\Users\User\DBD381Project>*** (Wherever the locati
     docker compose down
 
 Project overview
+
 --> Consists of a backend which defines database schemas, API routes that allow CRUD opertation to the database, Testing that performs stress tests to see how our database copes under heavy load
 
 --> Consists of a frontend which make life easier to see how our routes work so u dont have to demonstrate through REST Client, Allows users to sign-up/login, Manage orders/View orders, Manage products, Manage categories for products, Write up reviews, Process transactions
+
 --> Uses Docker for containerization and ease of view
+
 --> MongoDB atlas for our Distributed database
 
 Team members and roles
