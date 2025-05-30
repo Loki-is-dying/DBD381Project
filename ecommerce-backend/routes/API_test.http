@@ -2,7 +2,7 @@
 ### API Endpoints for products ----------------------------------------------------
 GET http://localhost:5000/api/products
 ###
-GET http://localhost:5000/api/products/6833378fb654e814efc8599c
+GET http://localhost:5000/api/products/68389955d299e87d9cf0e92d
 ###
 POST http://localhost:5000/api/products
 Content-Type: application/json
@@ -11,11 +11,11 @@ Content-Type: application/json
     "name":"Cheese",
     "price": "49",
     "stock": "10",
-    "description": "Is a wonderful thing",
-    "category": "Dairy"
+    "description": "limited addition",
+    "category": "Food"
 }
 ###
-DELETE http://localhost:5000/api/products/DickCheese
+DELETE http://localhost:5000/api/products/Cheese
 ###
 
 
@@ -26,31 +26,22 @@ POST http://localhost:5000/api/categories
 Content-Type: application/json
 
 {
-  "categories": [
-    { "name": "Dairy", "quantity": 10 },
-    { "name": "Meats", "quantity": 5 },
-    { "name": "Fruits", "quantity": 15 }
-  ]
+  "name": "School"
 }
 
 ### Get All Category Documents
 GET http://localhost:5000/api/categories
 
 ### Update a Category Document by ID
-PUT http://localhost:5000/api/categories/category/update/6834534b45f1268d805dc104
+PUT http://localhost:5000/api/categories/category/update/683938f56bd66819066eac35
 Content-Type: application/json
 
 {
-  "categories": [
-    {
-      "CatId": "60c72b559e1d4c4f887fd321",
-      "quantity": 20
-    }
-  ]
+  "name":"school"
 }
 
 ### Delete a Category Document by ID
-DELETE http://localhost:5000/api/categories/categories/6834534b45f1268d805dc108
+DELETE http://localhost:5000/api/categories/categories/683938f56bd66819066eac35
 ###
 
 
@@ -81,10 +72,10 @@ Content-Type: application/json
 }
 
 ### Get All Orders by User ID
-GET http://localhost:5000/api/orders/user/6834639992b385f4d35031a7
+GET http://localhost:5000/api/orders/user/60c72b2f9e1d4c4f887fd123
 
 ### Update Order Status
-PUT http://localhost:5000/api/orders/6835a64ba4aee8a63d348ec4
+PUT http://localhost:5000/api/orders/683939136bd66819066eac42
 Content-Type: application/json
 
 {
@@ -92,7 +83,7 @@ Content-Type: application/json
 }
 
 ### Delete Order
-DELETE http://localhost:5000/api/orders/6834648992b385f4d35031b9
+DELETE http://localhost:5000/api/orders/683939136bd66819066eac42
 
 
 
@@ -114,7 +105,7 @@ Content-Type: application/json
 }
 
 ### Update review
-PUT http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e/0
+PUT http://localhost:5000/api/reviews/66506bd26b0d18f6b70d333e/0
 Content-Type: application/json
 
 {
@@ -124,7 +115,7 @@ Content-Type: application/json
 
 
 ### Delete Review
-DELETE http://localhost:5000/api/reviews/66506bd26b0d18f6b70d215e/0
+DELETE http://localhost:5000/api/reviews/66506bd26b0d18f6b70d333e/0
 
 
 
@@ -141,32 +132,21 @@ Content-Type: application/json
 
 {
   "userId": "66506bd26b0d18f6b70d215a",
-  "transaction": [
-    {
-      "amount": 100.0,
-      "currency": "USD",
-      "type": "deposit"
-    }
-  ]
+  "transaction": {
+    "products": [
+      {
+        "productId": "665070246b0d18f6b70d215c",
+        "quantity": 2,
+        "price": 50
+      }
+    ],
+    "totalAmount": 100,
+    "paymentMethod": "Card",
+    "paymentStatus": "Paid"
+  }
 }
 
-### Update transaction
-PUT http://localhost:5000/api/transactions/66506bd26b0d18f6b70d215a
-Content-Type: application/json
 
-{
-  "userId": "66506bd26b0d18f6b70d215a",
-  "transaction": [
-    {
-      "amount": 150.0,
-      "currency": "USD",
-      "type": "deposit"
-    }
-  ]
-}
-
-###delete transaction
-DELETE http://localhost:5000/api/transactions/66506bd26b0d18f6b70d215a
 
 
 
